@@ -1,0 +1,92 @@
+@extends('backend.Main')
+@section('content')
+
+      <div class="table-responsive bg-warning mt-4 p-5 rounded shadow">
+        <h2 class="float-start text-light text-center mb-3">List of Author</h2>
+        <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Author
+          </button>
+
+          <!-- Modal -->
+          <form method="post" action={{route('author.create')}} enctype="multipart/form-data" >
+            @csrf
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Add Author</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            <div class="form-gorup">
+                                <label for="">Upload Image</label>
+                                <input name="author_image" type="file" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Author Name</label>
+                                <input name="author_name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Author Email</label>
+                                <input name="Author_Email" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Contact Number</label>
+                                <input name="Contact_No" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Salary</label>
+                                <input name="Salary" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </form>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Serial</th>
+              <th>Author_Name</th>
+              <th>Image</th>
+              <th>Author_Email</th>
+              <th>Contact_No</th>
+              <th>Salary</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($author as $key=> $data)
+
+      <tr>
+        <th scope="row">{{$key+1}}</th>
+
+        <td>
+            <img style="width: 100px;" src="{{ url('/files/author/' . $data->image) }}" alt="">
+        </td>
+
+        <td>{{$data->author_name}}</td>
+        <td>{{$data->Author_Email}}</td>
+        <td>{{$data->Contact_No}}</td>
+        <td>{{$data->Salary}}</td>
+        <td>
+            <a class="btn btn-success" href="">Edit </a>
+            <a class="btn btn-danger" href="">Delete </a>
+        </td>
+      </tr>
+      @endforeach
+
+          </tbody>
+        </table>
+      </div>
+  @endsection
