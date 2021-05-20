@@ -14,4 +14,12 @@ class enrollingCourseList extends Controller
         $studentList=Enrolling::with('studentName')->get();
         return view('backend.content.enrollCourseList.enrollCourseList',compact('courseList', 'studentList'));
     }
+    public function statusUpdate( $id, $status)
+    {
+        $enroll= Enrolling::find($id);
+
+        $enroll->update(['status'=>$status]);
+
+        return redirect()->back();
+    }
 }

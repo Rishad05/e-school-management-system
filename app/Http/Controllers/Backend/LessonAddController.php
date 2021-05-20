@@ -30,4 +30,11 @@ class LessonAddController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function delete($id)
+    {
+        $author = Lesson::find($id);
+        $author->delete();
+        return redirect()->route('lesson');
+    }
 }

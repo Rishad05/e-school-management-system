@@ -16,16 +16,35 @@ class EnrollingController extends Controller
         $enrollingList=Enrolling::all();
         return view('frontend.layouts.enrollCourse', compact('course', 'enrollingList'));
     }
-    public function buyCourse($id)
-    {
-        // dd($id);
-       $add=Enrolling::create([
-            'course_id'=>$id,
-            'student_id'=> auth()->user()->id,
-        ]);
-        Mail::to (auth()->user()->email)->send(new confirmation($add));
-        return redirect()->back()->with('success', 'Enroll Course Successfully');
+
+    public function buyCourse($id){
+        $course=Course::find($id);
+
+        return view('frontend.layouts.buyCourse',compact('course'));
     }
+
+    public function confirmBuyCourse(Request $request){
+
+
+
+        Enrolling::create([
+                    'course_id'=>$request->course_id,
+                    'student_id'=> auth()->user()->id,
+                ]);
+                return redirect()->back()->with('success', 'Enroll Course Successfully, Please wait for Admin Confirmation after that you can see the course in Your Profile');
+    }
+
+    // public function create($id)
+    // {
+    //     // dd($id);
+    //    $add=Enrolling::create([
+    //         'course_id'=>$id,
+    //         'student_id'=> auth()->user()->id,
+    //     ]);
+    //     Mail::to (auth()->user()->email)->send(new confirmation($add));
+    //
+    // }
+
 
 
 }

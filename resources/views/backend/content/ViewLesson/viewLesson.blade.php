@@ -6,7 +6,6 @@
         <tr>
           <th>Lesson_Id</th>
           <th>Lesson_name</th>
-
           <th>Course_Name</th>
           <th>Description</th>
           <th>Action</th>
@@ -23,8 +22,6 @@
     <td>{{$data->description}}</td>
     <td>
         <a href="{{route('view.topic', $data['id'])}}" class="btn btn-info">View Topic</a>
-        <a class="btn btn-success" href="">Edit </a>
-        <a class="btn btn-danger" href="">Delete </a>
     </td>
   </tr>
   @endforeach

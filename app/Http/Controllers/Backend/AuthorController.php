@@ -34,11 +34,18 @@ class AuthorController extends Controller
             'author_name'=>$request->author_name,
             'Author_Email'=>$request->Author_Email,
             'Contact_No'=>$request->Contact_No,
-            'Salary'=>$request->Salary,
             'image'=>$file_name
 
         ]);
         return redirect()->back();
+    }
+
+
+    public function delete($id)
+    {
+        $author = Author::find($id);
+        $author->delete();
+        return redirect()->route('author');
     }
 
 }

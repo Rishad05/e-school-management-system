@@ -18,7 +18,6 @@ class CreateAuthorsTable extends Migration
             $table->string('author_name',120);
             $table->string('Author_Email',120);
             $table->string('Contact_No',20);
-            $table->string('Salary',120);
             $table->text('image')->nullable();
             $table->timestamps();
         });

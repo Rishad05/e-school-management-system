@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Assignment_Description</label>
-                                <input name="Assignment_description" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
+                                <textarea name="Assignment_description" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name"></textarea>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
         <td>{{$data->Assignment_description}}</td>
         <td>
             <a class="btn btn-success" href="">Edit </a>
-            <a class="btn btn-danger" href="">Delete </a>
+            <a class="btn btn-danger" href=" {{route('assignment.delete', $data['id'])}} ">Delete </a>
         </td>
       </tr>
       @endforeach

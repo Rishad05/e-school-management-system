@@ -9,9 +9,8 @@
         <tr>
           <th>Topic_Id</th>
           <th>Topic_Title</th>
-        <th>File</th>
+        <th>Topic Video</th>
           <th>Lesson_Name</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>

@@ -12,8 +12,6 @@ use Illuminate\Http\Request;
 class SubmittedController extends Controller
 {
     public function submittedAssignment(){
-        // $studentInfo = User:: all();
-        // $studentCourse= Course::all();
         $AssignmentList=SubmitAssignment::with('studentCourse','studentName')->get();
         // dd($AssignmentList);
         return view('backend.content.SubmittedAssignment.SubmittedAssignment',compact('AssignmentList'));

@@ -87,6 +87,26 @@ class CourseController extends Controller
         $course->delete();
         return redirect()->route('course');
     }
+
+    public function editCourse($id)
+    {
+        $author=Author::all();
+        $course = Course::find($id);
+        return view('backend.content.courses.edit', compact('course', 'author'));
+    }
+
+    public function updateCourse(Request $request, $id)
+    {
+        Course::find($id)->update([
+            'course_name'=>$request->course_name,
+            'course_price' =>$request->course_price,
+            'author_id'=>$request->author_id,
+        ]);
+        return redirect()->route('course')->with('success','Course updated successfully');
+    }
+
+
+
     public function completedUpdate( $id, $status)
     {
         $course= Course::find($id);

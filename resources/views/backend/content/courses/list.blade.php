@@ -3,6 +3,11 @@
 
 
       <div class="table-responsive bg-warning mt-4 p-5 rounded shadow ">
+        @if(session()->has('success'))
+        <div class="alert alert-success">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 <!-- Button trigger modal -->
 <h2 class="float-start text-light text-center border-buttom ">List Of Courses</h2>
 <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -100,7 +105,7 @@
                         @endif
                     </li>
 
-                    <li class="bg-info"><a class="btn" href="">Edit</span></a></li>
+                    <li class="bg-info"><a class="btn" href="{{route('course.edit', $data['id'])}}">Edit</span></a></li>
                     <li class="bg-danger"><a class="btn btn-danger" href={{ route('course.delete', $data['id']) }}>Delete</a></li>
 
 

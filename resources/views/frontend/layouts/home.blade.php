@@ -59,7 +59,7 @@
 
     <div class="card-group">
         <div class="card">
-          <img src="{{url('files/courses/'.$data->image)}}" class="card-img-top" alt="">
+          <img class="w-100 h-100" src="{{url('files/courses/'.$data->image)}}" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">Course Title: {{$data->course_name}}</h5>
             <p class="card-text">Author: {{$data->courseAuthor->author_name}}</p>

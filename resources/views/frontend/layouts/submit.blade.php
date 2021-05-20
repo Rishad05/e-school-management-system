@@ -12,12 +12,6 @@
                 @endif
                 <form method="post" action="{{ route('submitAssignment.create',$assignmentId)}}" enctype="multipart/form-data">
                     @csrf
-                    {{-- <div class="mb-3">
-                        <input name="student_name" type="hidden" class="form-control" value={{auth()->user()->std->id}}>
-                        </div>
-                        <div class="mb-3">
-                            <input name="student_name" type="hidden" class="form-control" value={{auth()->user()->studentCourse->id}}>
-                        </div> --}}
                     <div class="mb-3">
                     <label  class="form-label fs-5 fw-bolder text-light bg-dark p-1 rounded mb-3">Upload Assingnment</label>
                     <textarea name="upload_assignment" type="text" class="form-control" placeholder="Submit assignment link"></textarea>

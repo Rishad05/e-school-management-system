@@ -14,7 +14,7 @@
         <tr>
           <th>Topic_Id</th>
           <th>Topic_Title</th>
-            <th>File</th>
+            <th>Topic Video</th>
           <th>Lesson_Name</th>
           <th>Action</th>
         </tr>
@@ -32,13 +32,12 @@
              <source src="{{ url('/files/topic/' . $data->file) }}" type="video/mp4"/>
         <source src="{{ url('/files/topic/' . $data->file) }}"/>
         </video>
-        {{-- <video style="width: 100px;" src="{{ url('/files/topic/' . $data->file) }}" alt=""></video> --}}
     </td>
     <td>{{$data->courseLesson->lesson_name}}</td>
 
     <td>
         <a class="btn btn-success" href="">Edit </a>
-        <a class="btn btn-danger" href="">Delete </a>
+        <a class="btn btn-danger" href=" {{route('topic.delete', $data['id'])}} ">Delete </a>
     </td>
   </tr>
   @endforeach

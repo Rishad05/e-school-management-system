@@ -27,7 +27,8 @@ class StudentController extends Controller
 
         $studentPro=User::find(auth()->user()->id);
 
-        $course=Enrolling::with('enrollCourse')->where('student_id',auth()->user()->id)->get();
+        $course=Enrolling::with('enrollCourse')->where('student_id',auth()->user()->id)->where('status','=','confirm')->get();
+
 
         // $course= Enrolling::where('user_id'->student_id)->get();
         return view('frontend.layouts.userProfile', compact( 'studentPro','course'));

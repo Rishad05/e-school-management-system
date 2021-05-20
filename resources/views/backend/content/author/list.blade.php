@@ -38,10 +38,6 @@
                                 <label for="exampleInputEmail1">Contact Number</label>
                                 <input name="Contact_No" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Salary</label>
-                                <input name="Salary" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
-                            </div>
 
                         </div>
                     </div>
@@ -61,7 +57,6 @@
               <th>Image</th>
               <th>Author_Email</th>
               <th>Contact_No</th>
-              <th>Salary</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -78,10 +73,9 @@
         <td>{{$data->author_name}}</td>
         <td>{{$data->Author_Email}}</td>
         <td>{{$data->Contact_No}}</td>
-        <td>{{$data->Salary}}</td>
         <td>
             <a class="btn btn-success" href="">Edit </a>
-            <a class="btn btn-danger" href="">Delete </a>
+            <a class="btn btn-danger" href="{{route('author.delete', $data['id'])}}">Delete </a>
         </td>
       </tr>
       @endforeach

@@ -21,6 +21,10 @@ class CreatePaymentsTable extends Migration
             $table->integer('transaction_id');
 
             $table->timestamps();
+
+
+
+
         });
     }
 

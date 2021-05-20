@@ -41,4 +41,11 @@ class TopicController extends Controller
         ]);
         return redirect()->back();
     }
+
+    public function delete($id)
+    {
+        $author = Topic::find($id);
+        $author->delete();
+        return redirect()->route('topic');
+    }
 }

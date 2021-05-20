@@ -28,9 +28,9 @@
                         @endauth
                         </li>
 
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a class="nav-link" href="#">Feedback</a>
-                      </li>
+                      </li> --}}
 
                     </ul>
                   </div>

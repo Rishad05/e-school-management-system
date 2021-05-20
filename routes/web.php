@@ -20,12 +20,15 @@ Route::group(['prefix' => 'student'], function (){
 
     Route::group(['middleware'=>'student-auth'],function(){
         Route::get('/enroll/course/{id}',[EnrollingController::class, 'enrollCourse'])->name('enroll.course');
-        Route::get('/enroll/course/book/{id}',[EnrollingController::class, 'buyCourse'])->name('buy.course');
+        // Route::get('/enroll/course/book/{id}',[EnrollingController::class, 'create'])->name('buy.course');
         Route::get('/studentViewLesson/{id}', [StudentController::class, 'studentViewLesson'])->name('studentViewLesson');
         Route::get('/studentViewTopic/{id}', [StudentController::class, 'studentViewTopic'])->name('studentViewTopic');
         Route::get('/studentViewAssignment/{id}', [StudentController::class, 'studentViewAssignment'])->name('studentViewAssignment');
         Route::get('/submitAssignment/{id}', [CourseController::class, 'submitAssignment'])->name('submitAssignment');
         Route::post('/submitAssignment/{id}', [CourseController::class, 'submitCreate'])->name('submitAssignment.create');
+
+        Route::get('/buyCourse/{id}',[EnrollingController::class, 'buyCourse'])->name('buyCourse');
+        Route::post('/confirmBuyCourse',[EnrollingController::class, 'confirmBuyCourse'])->name('confirmBuyCourse');
     });
 
 
@@ -58,9 +61,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/courses',[CourseController::class, 'course'] )-> name('course');
     Route::post('/courses',[CourseController::class, 'create'] )-> name('course.create');
     Route::get('/courses/delete/{id}',[CourseController::class,'delete'])->name('course.delete');
+    Route::get('/courses/edit/{id}',[CourseController::class,'editCourse'])->name('course.edit');
+    Route::put('/courses/update/{id}',[CourseController::class,'updateCourse'])->name('course.update');
     Route::get('courses/viewLesson/{id}',[CourseController::class, 'viewLesson'])->name('viewLesson');
     Route::get('/courses/{id}/{status}', [CourseController::class, 'completedUpdate'])->name('completedUpdate');
     Route::get('/enrollCourseList',[enrollingCourseList::class, 'enrollingCourseList'])->name('enrollingCourseList');
+    Route::get('/enrollCourseList/{id}/{status}', [enrollingCourseList::class, 'statusUpdate'])->name('statusUpdate');
     Route::get('/viewAssignment/{id}',[CourseController::class, 'viewAssignment'])->name('viewAssignment');
     Route::get('/submittedAssignment',[SubmittedController::class, 'submittedAssignment'])->name('submittedAssignment');
 
@@ -77,12 +83,14 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/authorList', [AuthorController::class, 'author'] )-> name('author');
     Route::post('/authorList', [AuthorController::class, 'create'] )-> name('author.create');
+    Route::get('/author/delete/{id}',[AuthorController::class,'delete'])->name('author.delete');
 
 
 
 
     Route::get('/topicList',[TopicController::class, 'topic'])-> name('topic');
     Route::post('/topicList', [TopicController::class, 'create'] )-> name('topic.create');
+    Route::get('/topic/delete/{id}',[TopicController::class,'delete'])->name('topic.delete');
 
 
 
@@ -91,10 +99,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/lessonsAdd', [LessonAddController::class, 'lesson'] )-> name('lesson');
     Route::post('/lessonsAdd', [LessonAddController::class, 'create'])->name('lesson.create');
     Route::get('lesson/viewTopic/{id}',[LessonAddController::class, 'viewTopic'])->name('view.topic');
+    Route::get('/lesson/delete/{id}',[LessonAddController::class,'delete'])->name('lesson.delete');
 
 
     Route::get('/assignmentAdd', [AssignmentController::class, 'assignment'])->name('assignment');
     Route::post('/assignmentAdd', [AssignmentController::class, 'create'])->name('assignment.create');
+    Route::get('/assignment/delete/{id}',[AssignmentController::class,'delete'])->name('assignment.delete');
 
 
 
