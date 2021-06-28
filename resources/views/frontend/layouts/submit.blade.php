@@ -2,25 +2,17 @@
 @section('content')
 
 
-        <div class="row">
-
+        <div class="row" style="height:400px";>
             <div class="col-md-10 m-auto bg-warning shadow rounded border mt-5 p-5">
-                @if(session()->has('success'))
-                <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                </div>
-                @endif
                 <form method="post" action="{{ route('submitAssignment.create',$assignmentId)}}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                    <label  class="form-label fs-5 fw-bolder text-light bg-dark p-1 rounded mb-3">Upload Assingnment</label>
+                    <label  class="fw-bolder pb-3"> Submit Assingnment:</label>
                     <textarea name="upload_assignment" type="text" class="form-control" placeholder="Submit assignment link"></textarea>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-
         </div>
 
 

@@ -1,8 +1,5 @@
 @extends('frontend.main')
-
 @section('content')
-
-
     <div class="row" style="padding: 115px; background: linear-gradient(to bottom right, #66ff33 0%, #ffffcc 100%); ">
         @if(session()->has('success'))
             <div class="alert alert-success">
@@ -30,7 +27,7 @@
                     <input required name="password" type="password" class="form-control" id="exampleInputPassword1">
                 </div>
 
-                <button type="submit" class="btn btn-danger">Submit</button>
+                <button type="submit" class="btn btn-danger">Login</button>
             </form>
         </div>
         <div class="col-md-6">
@@ -59,7 +56,7 @@
                     <input name="password" required type="password" class="form-control" id="exampleInputPassword1">
                 </div>
 
-                <button type="submit" class="btn btn-danger">Submit</button>
+                <button type="submit" class="btn btn-danger">Registration</button>
             </form>
         </div>
     </div>

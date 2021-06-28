@@ -1,12 +1,18 @@
 @extends('frontend.Main')
 @section('content')
 
-     <div class="row">
+     <div class="row" style="height:400px";>
+
          <div class="col-md-10 m-auto">
-            <div class="table-responsive bg-warning mt-4 p-5 rounded shadow">
+            <div class="bg-warning mt-4 p-5 rounded shadow">
 
-
-                <div class="row m-auto">
+                @if (session()->has('error-message'))
+                <div class="alert alert-danger d-flex justify-content-between">
+                    {{ session()->get('error-message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+                <div class="row m-auto" >
                     <div class="col-md-10">
                         <table class="table table-sm">
                             <thead>

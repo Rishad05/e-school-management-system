@@ -16,13 +16,8 @@ class CreateAssignmentsTable extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->string('Assignment_Name',120);
-            $table->integer('course_id');
+            $table->foreignId('course_id')->constrained()->restrictOnDelete();
             $table->string('Assignment_description',120);
-            $table->string('status')->default('Published');
-
-
-
-
             $table->timestamps();
         });
     }

@@ -16,9 +16,8 @@ class CreateLessonsTable extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('lesson_name',120);
-            $table->integer('course_id');
+            $table-> foreignId('course_id')->constrained()->restrictOnDelete();
             $table->string('description',120);
-            $table->string('status')->default('Published');
             $table->timestamps();
         });
     }

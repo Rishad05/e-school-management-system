@@ -2,7 +2,7 @@
 @section('content')
 
 
-<div class="row">
+<div class="row" style="height:400px";>
     <div class="col-md-10 m-auto">
         <div class="table-responsive bg-warning mt-4 p-5 rounded shadow">
 

@@ -33,7 +33,6 @@
         </div>
     </div>
 </div>
-
 <div class="col-md-4 my-3">
     <div class="card bg-danger text-white shadow" style="width: 20rem;height:10rem;">
         <div class="card-body">
@@ -42,7 +41,6 @@
         </div>
     </div>
 </div>
-
 <div class="col-md-4 my-3">
     <div class="card bg-info text-white shadow" style="width: 20rem;height:10rem;">
         <div class="card-body">
@@ -51,7 +49,6 @@
         </div>
     </div>
 </div>
-
 <div class="col-md-4 my-3">
     <div class="card bg-secondary text-white shadow" style="width: 20rem;height:10rem;">
         <div class="card-body">
@@ -60,6 +57,5 @@
         </div>
     </div>
 </div>
-
 </div>
 @endsection

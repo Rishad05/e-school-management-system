@@ -17,7 +17,7 @@ class StudentController extends Controller
     public function student(){
         $studentCourse=Course::all();
         $studentInfo=User::all();
-        $studentList=Student::all();
+        $studentList=Student::paginate(3);
 
         return view('backend.content.student.list', compact('studentList', 'studentInfo', 'studentCourse'));
     }

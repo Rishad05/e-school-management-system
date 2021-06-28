@@ -28,6 +28,7 @@
 
     <link href="/css/coursel.css" rel="stylesheet">
     <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
     <link href="/css/userProfile.css" rel="stylesheet">
 
 

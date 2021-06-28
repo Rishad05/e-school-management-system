@@ -62,7 +62,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href={{route('report')}}>
                         <i class="fas fa-chart-bar"></i>
-                      Sell Reports
+                      Report
                     </a>
                   </li>
             @endif

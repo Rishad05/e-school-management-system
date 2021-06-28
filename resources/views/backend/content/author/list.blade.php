@@ -2,6 +2,19 @@
 @section('content')
 
       <div class="table-responsive bg-warning mt-4 p-5 rounded shadow">
+        @if (session()->has('error-message'))
+        <div class="alert alert-danger d-flex justify-content-between">
+            {{ session()->get('error-message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger d-flex justify-content-between">{{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
         <h2 class="float-start text-light text-center mb-3">List of Author</h2>
         <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Add Author
@@ -64,17 +77,17 @@
             @foreach ($author as $key=> $data)
 
       <tr>
-        <th scope="row">{{$key+1}}</th>
+        <th scope="row">{{$author->firstItem()+$key}}</th>
 
         <td>
-            <img style="width: 100px;" src="{{ url('/files/author/' . $data->image) }}" alt="">
+            <img  style="width: 100px; height: 90px" src="{{ url('/files/author/' . $data->image) }}" alt="">
         </td>
 
         <td>{{$data->author_name}}</td>
         <td>{{$data->Author_Email}}</td>
         <td>{{$data->Contact_No}}</td>
         <td>
-            <a class="btn btn-success" href="">Edit </a>
+            <a class="btn btn-success" href="{{route('author.edit', $data['id'])}}">Edit </a>
             <a class="btn btn-danger" href="{{route('author.delete', $data['id'])}}">Delete </a>
         </td>
       </tr>
@@ -82,5 +95,6 @@
 
           </tbody>
         </table>
+        {{$author->links()}}
       </div>
   @endsection

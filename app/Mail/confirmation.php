@@ -14,12 +14,12 @@ class confirmation extends Mailable
     /**
      * Create a new message instance.
      *
-     * @return void
+     *  @return void
      */
-    protected $reg;
-    public function __construct($add)
+    protected $enroll;
+    public function __construct($enroll)
     {
-        $this->reg=$add;
+        $this -> enroll = $enroll;
     }
 
     /**
@@ -29,6 +29,7 @@ class confirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('frontend.layouts.mail')->with(['addedData'=>$this->reg]);
+        return $this->view('backend.content.email')->with(['enrollData'=>$this -> enroll]);
     }
+
 }

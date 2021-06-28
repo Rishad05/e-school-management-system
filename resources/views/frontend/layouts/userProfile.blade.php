@@ -47,6 +47,7 @@
                 <td>
                     <a class="btn btn-info" href="{{route('studentViewLesson',$data->enrollCourse->id)}}">View Lesson </a>
                     <a class="btn btn-info" href="{{route('studentViewAssignment',$data->enrollCourse->id)}}">View Assignment </a>
+                    <a class="btn btn-info"  href="{{route('giveReview')}}">Give Feedback</a>
                 </td>
 
               </tr>

@@ -22,13 +22,9 @@
 
                     <div class="modal-body">
                         <div class="modal-body">
-                            {{-- <div class="form-gorup">
-                                <label for="">Upload Image</label>
-                                <input name="author_image" type="file" class="form-control">
-                            </div> --}}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Assignment_Name</label>
-                                <input name="Assignment_Name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name">
+                                <input name="Assignment_Name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Assignment Name">
                             </div>
                             <div>
                                 <label for="exampleFormControlInput1" class="form-label">Course Name</label>
@@ -42,7 +38,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Assignment_Description</label>
-                                <textarea name="Assignment_description" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter author Name"></textarea>
+                                <textarea name="Assignment_description" type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -68,7 +64,7 @@
             @foreach ($assignment as $key=> $data)
 
       <tr>
-        <th scope="row">{{$key+1}}</th>
+        <th scope="row">{{$assignment->firstItem()+$key}}</th>
 
         {{-- <td>
             <img style="width: 100px;" src="{{ url('/files/author/' . $data->image) }}" alt="">
@@ -78,7 +74,7 @@
         <td>{{$data->studentCourse->course_name}}</td>
         <td>{{$data->Assignment_description}}</td>
         <td>
-            <a class="btn btn-success" href="">Edit </a>
+            <a class="btn btn-success" href="{{route('assignment.edit', $data['id']) }}">Edit </a>
             <a class="btn btn-danger" href=" {{route('assignment.delete', $data['id'])}} ">Delete </a>
         </td>
       </tr>
@@ -86,5 +82,6 @@
 
           </tbody>
         </table>
+        {{$assignment->links()}}
       </div>
   @endsection

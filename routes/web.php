@@ -15,6 +15,7 @@ use App\Http\Controllers\Frontend\EnrollingController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Backend\TopicController;
+use App\Http\Controllers\Frontend\ReviewController;
 
 Route::group(['prefix' => 'student'], function (){
 
@@ -26,9 +27,11 @@ Route::group(['prefix' => 'student'], function (){
         Route::get('/studentViewAssignment/{id}', [StudentController::class, 'studentViewAssignment'])->name('studentViewAssignment');
         Route::get('/submitAssignment/{id}', [CourseController::class, 'submitAssignment'])->name('submitAssignment');
         Route::post('/submitAssignment/{id}', [CourseController::class, 'submitCreate'])->name('submitAssignment.create');
-
         Route::get('/buyCourse/{id}',[EnrollingController::class, 'buyCourse'])->name('buyCourse');
         Route::post('/confirmBuyCourse',[EnrollingController::class, 'confirmBuyCourse'])->name('confirmBuyCourse');
+        Route::get('/giveReview',[ReviewController::class, 'giveReview'])->name('giveReview');
+        Route::post('/submitReview',[ReviewController::class,'submitReview'])->name('submitReview');
+
     });
 
 
@@ -43,6 +46,7 @@ Route::get('/userProfile', [StudentController::class, 'userProfile'])->name('use
 
 
 Route::get('/viewAllCourses',[HomeController::class, 'viewAllCourse'])->name('viewAllCourse');
+
 
 
 
@@ -84,6 +88,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/authorList', [AuthorController::class, 'author'] )-> name('author');
     Route::post('/authorList', [AuthorController::class, 'create'] )-> name('author.create');
     Route::get('/author/delete/{id}',[AuthorController::class,'delete'])->name('author.delete');
+    Route::get('/author/edit/{id}',[AuthorController::class,'editAuthor'])->name('author.edit');
+    Route::put('/author/update/{id}',[AuthorController::class,'updateAuthor'])->name('author.update');
+
 
 
 
@@ -91,6 +98,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/topicList',[TopicController::class, 'topic'])-> name('topic');
     Route::post('/topicList', [TopicController::class, 'create'] )-> name('topic.create');
     Route::get('/topic/delete/{id}',[TopicController::class,'delete'])->name('topic.delete');
+    Route::get('/topic/edit/{id}',[TopicController::class,'editTopic'])->name('topic.edit');
+    Route::put('/topic/update/{id}',[TopicController::class,'updateTopic'])->name('topic.update');
 
 
 
@@ -100,11 +109,15 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/lessonsAdd', [LessonAddController::class, 'create'])->name('lesson.create');
     Route::get('lesson/viewTopic/{id}',[LessonAddController::class, 'viewTopic'])->name('view.topic');
     Route::get('/lesson/delete/{id}',[LessonAddController::class,'delete'])->name('lesson.delete');
+    Route::get('/lesson/edit/{id}',[LessonAddController::class,'editLesson'])->name('lesson.edit');
+    Route::put('/lesson/update/{id}',[LessonAddController::class,'updateLesson'])->name('lesson.update');
 
 
     Route::get('/assignmentAdd', [AssignmentController::class, 'assignment'])->name('assignment');
     Route::post('/assignmentAdd', [AssignmentController::class, 'create'])->name('assignment.create');
     Route::get('/assignment/delete/{id}',[AssignmentController::class,'delete'])->name('assignment.delete');
+    Route::get('/assignment/edit/{id}',[AssignmentController::class,'editAssignment'])->name('assignment.edit');
+    Route::put('/assignment/update/{id}',[AssignmentController::class,'updateAssignment'])->name('assignment.update');
 
 
 

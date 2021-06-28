@@ -25,7 +25,7 @@
     <td>
         <video width="200px" controls>
              <source src="{{ url('/files/topic/' . $data->file) }}" type="video/mp4"/>
-        <source src="{{ url('/files/topic/' . $data->file) }}"/>
+        {{-- <source src="{{ url('/files/topic/' . $data->file) }}"/> --}}
         </video>
     </td>
     <td>{{$data->courseLesson->lesson_name}}</td>

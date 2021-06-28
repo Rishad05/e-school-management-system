@@ -2,11 +2,25 @@
 @section('content')
 
 
-      <div class="table-responsive bg-warning mt-4 p-5 rounded shadow ">
-        @if(session()->has('success'))
-        <div class="alert alert-success">
+      <div class=" bg-warning mt-4 p-5 rounded shadow ">
+        @if (session()->has('success'))
+        <div class="alert alert-success d-flex justify-content-between">
             {{ session()->get('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+    @endif
+        @if (session()->has('error-message'))
+        <div class="alert alert-danger d-flex justify-content-between">
+            {{ session()->get('error-message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+@if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger d-flex justify-content-between">{{ $error }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     @endif
 <!-- Button trigger modal -->
 <h2 class="float-start text-light text-center border-buttom ">List Of Courses</h2>
@@ -51,6 +65,11 @@
                         <input name="course_price" type="number" class="form-control" id="exampleInputDescription" placeholder="Enter Course Price">
 
                     </div>
+                    <div class="form-group">
+                        <label for="exampleInputDescription">Payment No</label>
+                        <input name="payment_number" type="text" class="form-control" id="exampleInputDescription" placeholder="Enter Payment Number" required>
+
+                    </div>
 
                 </div>
             </div>
@@ -70,19 +89,21 @@
               <th>Name</th>
               <th>Author</th>
               <th>Price</th>
+              <th>Payment No</th>
               <th>Action</th>
             </tr>
           </thead>
         @foreach ($course as $key=> $data)
 
       <tr>
-        <th scope="row">{{$key+1}}</th>
+        <th scope="row">{{$course->firstItem()+$key}}</th>
         <td>
-            <img style="width: 100px;" src="{{ url('/files/courses/' . $data->image) }}" alt="">
+            <img style="width: 100px; height: 90px" src="{{ url('/files/courses/' . $data->image) }}" alt="">
         </td>
         <td>{{$data->course_name}}</td>
         <td>{{$data->courseAuthor->author_name}}</td>
         <td>{{$data->course_price}}</td>
+        <td>{{$data->payment_number}}</td>
         <td>
             <a class="btn btn-info" href="{{route('viewLesson', $data['id'])}}">view lesson </a>
             <a class="btn btn-info" href="{{route('viewAssignment', $data['id'])}}">View Assignment </a>
@@ -122,6 +143,7 @@
     </tbody>
 
         </table>
+        {{$course->links()}}
         <div class="p-5"></div>
 
       </div>

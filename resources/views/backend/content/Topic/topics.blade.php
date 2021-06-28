@@ -12,9 +12,9 @@
     <table class="table  table-sm">
       <thead>
         <tr>
-          <th>Topic_Id</th>
+          <th>Serial</th>
           <th>Topic_Title</th>
-            <th>Topic Video</th>
+            <th>Topic_Video</th>
           <th>Lesson_Name</th>
           <th>Action</th>
         </tr>
@@ -23,20 +23,20 @@
         @foreach ($topicList as $key=> $data)
 
   <tr>
-    <th scope="row">{{$key+1}}</th>
+    <th scope="row">{{$topicList->firstItem()+$key}}</th>
 
 
     <td>{{$data->topic_title}}</td>
     <td>
         <video width="200px" controls>
              <source src="{{ url('/files/topic/' . $data->file) }}" type="video/mp4"/>
-        <source src="{{ url('/files/topic/' . $data->file) }}"/>
+        {{-- <source src="{{ url('/files/topic/' . $data->file) }}"/> --}}
         </video>
     </td>
     <td>{{$data->courseLesson->lesson_name}}</td>
 
     <td>
-        <a class="btn btn-success" href="">Edit </a>
+        <a class="btn btn-success" href="{{route('topic.edit', $data['id']) }}">Edit </a>
         <a class="btn btn-danger" href=" {{route('topic.delete', $data['id'])}} ">Delete </a>
     </td>
   </tr>
@@ -44,6 +44,7 @@
 
       </tbody>
     </table>
+    {{$topicList->links()}}
   </div>
 
     <!-- Modal -->
